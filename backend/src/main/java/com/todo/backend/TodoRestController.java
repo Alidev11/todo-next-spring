@@ -5,9 +5,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api/tasks")
 public class TodoRestController {
     TodoService todoService;
@@ -17,8 +19,8 @@ public class TodoRestController {
     }
 
     @GetMapping("/")
-    public String getTasks() {
-        List<Task> tasks = todoService.getAllTasks();
+    public ArrayList<Task> getTasks() {
+        ArrayList<Task> tasks = todoService.getAllTasks();
         return tasks;
     }
 
