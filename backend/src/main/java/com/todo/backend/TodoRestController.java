@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/tasks")
 public class TodoRestController {
@@ -15,8 +17,9 @@ public class TodoRestController {
     }
 
     @GetMapping("/")
-    public String hello() {
-        return "Hello World";
+    public String getTasks() {
+        List<Task> tasks = todoService.getAllTasks();
+        return tasks;
     }
 
     @PostMapping("/newTask")
